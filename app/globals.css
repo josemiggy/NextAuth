@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  height: 100%;
+}
+
+@layer utilities {
+  .primary-button {
+    @apply flex items-center justify-center gap-1 rounded-lg px-3 py-2 text-sm bg-[#2c64f6] hover:bg-[#2a5fe9]/80 text-[#f9f8f7] transition-all ease-in-out duration-150 font-bold h-9;
+  }
+
+  .secondary-button {
+    @apply rounded-lg border px-3 py-2 font-medium hover:border-[#2c64f6] text-sm text-[#2c64f6] hover:text-[#2a5fe9]/80 duration-150 transition-all ease-in-out flex items-center gap-1 h-9;
+  }
+
+  .hover-item {
+    @apply hover:bg-[#603f1d0f] transition-all duration-150 ease-in-out;
+  }
+
+  .border-color {
+    @apply border-[#eceae7];
+  }
+}
