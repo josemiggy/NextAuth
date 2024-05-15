@@ -1,21 +1,24 @@
 "use client";
 import axios, { AxiosError } from "axios";
 import type { FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 
 const SignInForm = () => {
+  const { push } = useRouter();
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const payload = {
-      username: event.currentTarget.username.value,
+      email: event.currentTarget.email.value,
       password: event.currentTarget.password.value,
     };
 
     try {
       const { data } = await axios.post("/api/auth/login", payload);
       alert(JSON.stringify(data));
-      // redirect to /path
+      push("/");
     } catch (e) {
       const error = e as AxiosError;
 
@@ -30,12 +33,7 @@ const SignInForm = () => {
         onSubmit={handleSubmit}
         className="flex flex-col gap-2 w-full max-w-md"
       >
-        <Input
-          placeholder="Username"
-          type="text"
-          id="username"
-          name="username"
-        />
+        <Input placeholder="Email" type="text" id="email" name="email" />
         <Input
           placeholder="Password"
           type="password"

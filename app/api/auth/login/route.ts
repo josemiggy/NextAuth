@@ -7,9 +7,9 @@ const MAX_AGE = 60 * 60 * 24 * 30; //days
 export async function POST(request: Request) {
   const body = await request.json();
 
-  const { username, password } = body;
+  const { email, password } = body;
 
-  if (username !== "admin" || password !== "admin") {
+  if (email !== "jose@jetpak.so" || password !== "admin") {
     return NextResponse.json(
       {
         message: "Invalid credentials",
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   const secret = process.env.JWT_SECRET || "";
   const token = sign(
     {
-      username,
+      email,
     },
     secret,
     {
