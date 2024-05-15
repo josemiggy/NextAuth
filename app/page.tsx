@@ -1,5 +1,5 @@
-import Signin from "@/components/Signin";
+import Web from "@/components/Web";
 
 export default function Home() {
-  return <Signin />;
+  return <Web />;
 }
