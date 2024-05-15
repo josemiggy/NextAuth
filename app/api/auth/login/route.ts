@@ -2,6 +2,8 @@ import { serialize } from "cookie";
 import { sign } from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
+import users from "@/data/users.json";
+
 const MAX_AGE = 60 * 60 * 24 * 30; //days
 
 export async function POST(request: Request) {
@@ -9,7 +11,10 @@ export async function POST(request: Request) {
 
   const { email, password } = body;
 
-  if (email !== "jose@jetpak.so" || password !== "admin") {
+  // finding user by email
+  const user = users.find((user) => user.email === email);
+
+  if (!user || user.password !== password) {
     return NextResponse.json(
       {
         message: "Invalid credentials",
