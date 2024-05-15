@@ -40,7 +40,9 @@ const SignInForm = () => {
           id="password"
           name="password"
         />
-        <button className="primary-button">Login</button>
+        <button className="primary-button" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );
