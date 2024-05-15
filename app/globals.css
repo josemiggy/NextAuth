@@ -22,4 +22,8 @@
   .border-color {
     @apply border-[#eceae7];
   }
+  
+  .text-gray {
+    @apply font-medium text-[#6d6b70];
+  }
 }
