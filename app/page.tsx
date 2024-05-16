@@ -11,7 +11,7 @@ export default function Home() {
     <main className="flex flex-col w-full items-center justify-center h-full">
       <div className="flex flex-col gap-4 w-full">
         <Web />
-        {/* {JSON.stringify(data)} */}
+        {JSON.stringify(data)}
       </div>
     </main>
   );

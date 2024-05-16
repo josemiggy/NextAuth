@@ -5,8 +5,7 @@
     "name": "Jose Miguel",
     "username": "josemiggyy",
     "password": "1234",
-    "avatarUrl": "/images/jose.jpg",
-    "accessToken": ""
+    "avatarUrl": "/images/jose.jpg"
   },
   {
     "id": 2,
@@ -14,7 +13,6 @@
     "name": "Jose Miguel",
     "username": "jmiggy",
     "password": "1234",
-    "avatarUrl": "/images/jose.jpg",
-    "accessToken": ""
+    "avatarUrl": "/images/jose.jpg"
   }
 ]

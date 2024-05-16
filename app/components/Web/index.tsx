@@ -10,7 +10,6 @@ type User = {
   email: string;
   name: string;
   username: string;
-  password: string;
   avatarUrl: string;
 };
 

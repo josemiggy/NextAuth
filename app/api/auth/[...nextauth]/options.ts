@@ -1,7 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import users from "@/data/users.json";
-import { getSession } from "next-auth/react";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -19,27 +18,22 @@ export const options: NextAuthOptions = {
           placeholder: "Password",
         },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         if (!credentials) {
           return null; // Return null if credentials are not provided
         }
-        // Find the user by the provided email
+        // Find the user by the provided username
         const user = users.find((u) => u.email === credentials.email);
         // Check if the user exists and if the password matches
         if (user && user.password === credentials.password) {
-          const session = await getSession({ req });
-          if (!session) {
-            return null; // Return null if session doesn't exist
-          }
-          const { clientID, accessToken } = session.user;
           return {
             id: user.id.toString(),
-            email: user.username,
+            email: user.email,
             name: user.name,
             password: user.password,
             avatarURL: user.avatarUrl,
-            clientID,
-            accessToken,
+            clientID: "",
+            accessToken: "",
           };
         } else {
           return null;
