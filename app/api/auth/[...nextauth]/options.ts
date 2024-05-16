@@ -31,15 +31,15 @@ export const options: NextAuthOptions = {
           if (!session) {
             return null; // Return null if session doesn't exist
           }
-          const { clientID, accessToken } = session.user;
+          // const { clientID, accessToken } = session.user;
           return {
             id: user.id.toString(),
             email: user.email,
             name: user.name,
             password: user.password,
             avatarURL: user.avatarUrl,
-            clientID,
-            accessToken,
+            // clientID,
+            // accessToken,
           };
         } else {
           return null;
