@@ -13,6 +13,9 @@ const SignInForm = () => {
   
     const email = event.currentTarget.email.value;
     const password = event.currentTarget.password.value;
+
+    // Store the email in sessionStorage
+    sessionStorage.setItem("loggedInEmail", email);
   
     try {
       // Sign in using NextAuth.js signIn function
@@ -36,7 +39,6 @@ const SignInForm = () => {
       alert(error.message);
     }
   };
-
 
   return (
     <div className="flex flex-col gap-4 w-full items-center justify-center h-80">

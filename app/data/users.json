@@ -2,6 +2,7 @@
   {
     "id": 1,
     "email": "jose@jetpak.so",
+    "name": "Jose Miguel",
     "username": "josemiggyy",
     "password": "1234",
     "avatarUrl": "/images/jose.jpg"
@@ -9,6 +10,7 @@
   {
     "id": 2,
     "email": "josemiguel@gmail.com",
+    "name": "Jose Miguel",
     "username": "jmiggy",
     "password": "1234",
     "avatarUrl": "/images/jose.jpg"
