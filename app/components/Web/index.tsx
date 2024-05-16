@@ -44,7 +44,9 @@ const Web = () => {
                 alt="Profile"
                 width={40}
                 height={40}
-                className="rounded-full"
+                priority
+                quality={100}
+                className="rounded-full h-10 w-10"
               />
               <div className="flex flex-col">
                 {/* Display logged-in user's name and username */}
@@ -63,8 +65,8 @@ const Web = () => {
             </button>
           )}
         </div>
-        {/* <div className="flex flex-col gap-4 w-full h-80 p-4">
-          <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4 w-full h-40 p-4">
+          {/* <div className="flex flex-col gap-2">
             {loggedInUser ? (
               <>
                 <div className="flex items-center gap-1">
@@ -87,8 +89,8 @@ const Web = () => {
             ) : (
               <span>Loading...</span>
             )}
-          </div>
-        </div> */}
+          </div> */}
+        </div>
         <Footer />
       </div>
     </div>

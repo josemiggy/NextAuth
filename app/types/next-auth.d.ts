@@ -9,7 +9,8 @@ declare module "next-auth" {
       username: string;
       password: string;
       avatarUrl: string;
-      accessToken: string,
+      accessToken: any,
+      clientID: any,
     };
   }
 }
