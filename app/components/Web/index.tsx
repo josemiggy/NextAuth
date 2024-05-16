@@ -1,9 +1,8 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Header, Footer, Body } from "./components";
+import { Footer } from "./components";
 import Image from "next/image";
-
+import { signIn, signOut, useSession } from "next-auth/react";
 import users from "@/data/users.json";
 
 type User = {
@@ -16,6 +15,9 @@ type User = {
 };
 
 const Web = () => {
+  const { data: session } = useSession();
+  console.log({ session });
+
   // fetching loggedin User
   const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
 
@@ -55,7 +57,11 @@ const Web = () => {
               </div>
             </div>
           </div>
-          <button className="secondary-button">Logout</button>
+          {session?.user && (
+            <button onClick={() => signIn()} className="secondary-button">
+              Logout
+            </button>
+          )}
         </div>
         <div className="flex flex-col gap-4 w-full h-80 p-4">
           <div className="flex flex-col gap-2">

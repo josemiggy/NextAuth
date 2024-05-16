@@ -29,7 +29,9 @@ export const options: NextAuthOptions = {
           return {
             id: user.id.toString(),
             email: user.username,
+            name: user.name,
             password: user.password,
+            avatarURL: user.avatarUrl,
           };
         } else {
           return null;
@@ -37,6 +39,16 @@ export const options: NextAuthOptions = {
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token, user }) {
+      // this token is coming from the returned jwt
+      session.user = token as any;
+      return session;
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/signin",
