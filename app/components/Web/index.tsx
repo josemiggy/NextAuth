@@ -1,9 +1,8 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Header, Footer, Body } from "./components";
+import { Footer } from "./components";
 import Image from "next/image";
-
+import { signIn, signOut, useSession } from "next-auth/react";
 import users from "@/data/users.json";
 
 type User = {
@@ -11,19 +10,18 @@ type User = {
   email: string;
   name: string;
   username: string;
-  password: string;
   avatarUrl: string;
 };
 
 const Web = () => {
-  // Fetch the logged-in user data
-  const [loggedInUser, setLoggedInUser] = useState<User | null>(null); // Initialize as null
+  const { data: session } = useSession();
+  console.log({ session });
+  // fetching loggedin User
+  const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Logic to fetch logged-in user data (e.g., from session, context, etc.)
-    // For now, let's assume the user's email is stored in sessionStorage
+    // getting users creds from session storage
     const loggedInEmail = sessionStorage.getItem("loggedInEmail");
-    console.log("Logged-in Email:", loggedInEmail);
     if (loggedInEmail) {
       const user = users.find((u) => u.email === loggedInEmail);
       if (user) {
@@ -39,11 +37,13 @@ const Web = () => {
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <Image
-                src={loggedInUser ? loggedInUser.avatarUrl : ""}
+                src={loggedInUser ? loggedInUser.avatarUrl : "/next.svg"}
                 alt="Profile"
                 width={40}
                 height={40}
-                className="rounded-full"
+                priority
+                quality={100}
+                className="rounded-full h-10 w-10"
               />
               <div className="flex flex-col">
                 {/* Display logged-in user's name and username */}
@@ -56,10 +56,14 @@ const Web = () => {
               </div>
             </div>
           </div>
-          <button className="secondary-button">Logout</button>
+          {session?.user && (
+            <button onClick={() => signIn()} className="secondary-button">
+              Logout
+            </button>
+          )}
         </div>
-        <div className="flex flex-col gap-4 w-full h-80 p-4">
-          <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4 w-full h-40 p-4">
+          {/* <div className="flex flex-col gap-2">
             {loggedInUser ? (
               <>
                 <div className="flex items-center gap-1">
@@ -72,17 +76,11 @@ const Web = () => {
                   <span className="text-sm text-gray">User ID:</span>
                   <span className="text-sm font-bold">{loggedInUser.id}</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-sm text-gray">Client ID:</span>
-                  <span className="text-sm font-bold">
-                    {/* {loggedInUser.clientId} */}
-                  </span>
-                </div>
               </>
             ) : (
               <span>Loading...</span>
             )}
-          </div>
+          </div> */}
         </div>
         <Footer />
       </div>

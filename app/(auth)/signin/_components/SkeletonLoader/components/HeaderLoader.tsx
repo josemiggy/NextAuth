@@ -10,7 +10,7 @@ const HeaderLoader = () => {
           </div>
         </div>
       </div>
-      <div className="flex rounded-full h-3 w-3 bg-slate-300" />
+      <div className="flex rounded-full h-6 w-16 bg-slate-300" />
     </div>
   );
 };
