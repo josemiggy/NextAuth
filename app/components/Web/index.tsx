@@ -76,12 +76,6 @@ const Web = () => {
                   <span className="text-sm text-gray">User ID:</span>
                   <span className="text-sm font-bold">{loggedInUser.id}</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-sm text-gray">Client ID:</span>
-                  <span className="text-sm font-bold">
-                    {loggedInUser.clientId}
-                  </span>
-                </div>
               </>
             ) : (
               <span>Loading...</span>
