@@ -16,14 +16,12 @@ type User = {
 const Web = () => {
   const { data: session } = useSession();
   console.log({ session });
-
   // fetching loggedin User
   const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
 
   useEffect(() => {
     // getting users creds from session storage
     const loggedInEmail = sessionStorage.getItem("loggedInEmail");
-    console.log("Logged-in Email:", loggedInEmail);
     if (loggedInEmail) {
       const user = users.find((u) => u.email === loggedInEmail);
       if (user) {
