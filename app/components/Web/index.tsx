@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Header, Footer, Body } from "./components";
+import Image from "next/image";
 
 import users from "@/data/users.json";
 
@@ -37,7 +38,13 @@ const Web = () => {
         <div className="flex items-center justify-between p-4">
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
-              <div className="flex rounded-full h-10 w-10 bg-slate-300" />
+              <Image
+                src={loggedInUser ? loggedInUser.avatarUrl : ""}
+                alt="Profile"
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
               <div className="flex flex-col">
                 {/* Display logged-in user's name and username */}
                 <span className="text-base font-semibold">
@@ -68,7 +75,7 @@ const Web = () => {
                 <div className="flex items-center gap-1">
                   <span className="text-sm text-gray">Client ID:</span>
                   <span className="text-sm font-bold">
-                    {loggedInUser.clientId}
+                    {/* {loggedInUser.clientId} */}
                   </span>
                 </div>
               </>
