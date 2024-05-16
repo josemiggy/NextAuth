@@ -7,10 +7,10 @@ export const options: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: {
-          label: "username",
+        email: {
+          label: "Email",
           type: "text",
-          placeholder: "Username",
+          placeholder: "Email",
         },
         password: {
           label: "Password",
@@ -19,13 +19,18 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        // this is where I should put retrieving users data from local/db
-        const user = { id: "11", name: "Jose", password: "123" };
-        if (
-          credentials?.username === user.name &&
-          credentials?.password === user.password
-        ) {
-          return user;
+        if (!credentials) {
+          return null; // Return null if credentials are not provided
+        }
+        // Find the user by the provided username
+        const user = users.find((u) => u.email === credentials.email);
+        // Check if the user exists and if the password matches
+        if (user && user.password === credentials.password) {
+          return {
+            id: user.id.toString(),
+            email: user.username,
+            password: user.password,
+          };
         } else {
           return null;
         }

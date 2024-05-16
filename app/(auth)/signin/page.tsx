@@ -23,28 +23,6 @@ const SigninPage: NextPage = (SigninProps): JSX.Element => {
   };
   return (
     <div className="flex flex-col gap-4 items-center justify-center w-full h-full">
-      {/* Signin with password
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-        <input
-          value={userInfo.email}
-          onChange={({ target }) =>
-            setUserInfo({ ...userInfo, email: target.value })
-          }
-          className="focus:outline-none px-3 py-2 border rounded-lg"
-          type="email"
-          placeholder="Email"
-        />
-        <input
-          value={userInfo.password}
-          onChange={({ target }) =>
-            setUserInfo({ ...userInfo, password: target.value })
-          }
-          className="focus:outline-none px-3 py-2 border rounded-lg"
-          type="password"
-          placeholder="Password"
-        />
-        <input type="submit" value="Login" />
-      </form> */}
       <SkeletonLoader />
     </div>
   );

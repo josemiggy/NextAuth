@@ -3,28 +3,40 @@ import axios, { AxiosError } from "axios";
 import type { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
+import { signIn } from "next-auth/react";
 
 const SignInForm = () => {
   const { push } = useRouter();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const payload = {
-      email: event.currentTarget.email.value,
-      password: event.currentTarget.password.value,
-    };
-
+  
+    const email = event.currentTarget.email.value;
+    const password = event.currentTarget.password.value;
+  
     try {
-      const { data } = await axios.post("/api/auth/login", payload);
-      alert(JSON.stringify(data));
-      push("/");
-    } catch (e) {
-      const error = e as AxiosError;
-
+      // Sign in using NextAuth.js signIn function
+      const result = await signIn("credentials", {
+        redirect: false, // Do not redirect on success, handle it here
+        email,
+        password,
+      });
+  
+      // Check if there is no error in the result
+      if (!result?.error) {
+        // Sign-in successful, redirect to desired location
+        push("/");
+        return; // Exit the function after redirection
+      }
+  
+      // Handle sign-in error
+      alert(result.error);
+    } catch (error: any) {
+      // Handle other errors
       alert(error.message);
     }
   };
+
 
   return (
     <div className="flex flex-col gap-4 w-full items-center justify-center h-80">

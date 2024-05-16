@@ -7,11 +7,11 @@ export default async function Home() {
   
   return (
     <>
-      {session? (
-        <Web />
-      ) : (
+      {/* {session? (
         <h1>You cannot enter</h1>
-      )}
+      ) : (
+      )} */}
+      <Web />
     </>
   );
 }
