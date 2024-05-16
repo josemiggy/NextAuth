@@ -16,12 +16,11 @@ type User = {
 };
 
 const Web = () => {
-  // Fetch the logged-in user data
-  const [loggedInUser, setLoggedInUser] = useState<User | null>(null); // Initialize as null
+  // fetching loggedin User
+  const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Logic to fetch logged-in user data (e.g., from session, context, etc.)
-    // For now, let's assume the user's email is stored in sessionStorage
+    // getting users creds from session storage
     const loggedInEmail = sessionStorage.getItem("loggedInEmail");
     console.log("Logged-in Email:", loggedInEmail);
     if (loggedInEmail) {
@@ -39,7 +38,7 @@ const Web = () => {
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <Image
-                src={loggedInUser ? loggedInUser.avatarUrl : ""}
+                src={loggedInUser ? loggedInUser.avatarUrl : "/next.svg"}
                 alt="Profile"
                 width={40}
                 height={40}
