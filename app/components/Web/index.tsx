@@ -63,7 +63,7 @@ const Web = () => {
             </button>
           )}
         </div>
-        <div className="flex flex-col gap-4 w-full h-80 p-4">
+        {/* <div className="flex flex-col gap-4 w-full h-80 p-4">
           <div className="flex flex-col gap-2">
             {loggedInUser ? (
               <>
@@ -80,7 +80,7 @@ const Web = () => {
                 <div className="flex items-center gap-1">
                   <span className="text-sm text-gray">Client ID:</span>
                   <span className="text-sm font-bold">
-                    {/* {loggedInUser.clientId} */}
+                    {loggedInUser.clientId}
                   </span>
                 </div>
               </>
@@ -88,7 +88,7 @@ const Web = () => {
               <span>Loading...</span>
             )}
           </div>
-        </div>
+        </div> */}
         <Footer />
       </div>
     </div>
